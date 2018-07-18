@@ -4,6 +4,8 @@ import { KEY_PREFIX, REHYDRATE } from './constants'
 
 import type { Persistoid, PersistConfig, Transform } from './types'
 
+import stringify from 'json-stringify-safe'
+
 type IntervalID = any // @TODO remove once flow < 0.63 support is no longer required.
 
 export default function createPersistoid(config: PersistConfig): Persistoid {
@@ -124,5 +126,5 @@ export default function createPersistoid(config: PersistConfig): Persistoid {
 
 // @NOTE in the future this may be exposed via config
 function defaultSerialize(data) {
-  return JSON.stringify(data)
+  return stringify(data)
 }
